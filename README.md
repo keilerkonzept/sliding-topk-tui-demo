@@ -2,7 +2,7 @@
 
 This is a demo app for the <https://github.com/keilerkonzept/topk> library (specifically, the [`sliding`](https://pkg.go.dev/github.com/keilerkonzept/topk/sliding) package).
 
-The app is a real-time TUI leaderboard visualising sliding-window counts for items read from standard input. It shows a list of top-k items and a time series plot of historical counters for each item.
+The app is a real-time TUI leaderboard visualising sliding-window counts for items read from standard input. It shows a list of top-k items and a time series plot of the sliding window contents showing per-tick counters for each item..
 
 **Contents**
 
@@ -39,16 +39,17 @@ The input data looks like this:
 ...and the visualisation is generated like this:
 
 ```sh
-# read gzip'ed logs, transform them into {item,timestamp} JSON objects, and feed them to the TUI
-<access.log.gz zcat \
+# read gzip'ed log, transform them into {item,timestamp} JSON objects,
+# and feed them to the demo app.
+<access.log.gz gunzip \
     | jq  -c -R '. | split(" ") | {item:.[0],timestamp:(.[3][1:]+" "+.[4][:-1])}' \
     | sliding-topk-tui-demo \
-        -k 20 \         # track the top 20 items
-        -tick=5m \      # count in 5m buckets
-        -window=4h \    # rank by total count over a 4h sliding window
-        -json \         # read JSON items from stdin
-        -json-timestamp-layout="02/Jan/2006:15:04:05 -0700" \ # it's not RFC3339, so we need to specify a custom Go time layout
-        -view-split 30 # split the view vertically at 30% of the terminal width
+        -k 20 \
+        -tick=5m \
+        -window=4h \
+        -json \
+        -json-timestamp-layout="02/Jan/2006:15:04:05 -0700" \
+        -view-split 30
 ```
 
 ## Getting it
@@ -76,7 +77,7 @@ We use [`topk/sliding`](https://pkg.go.dev/github.com/keilerkonzept/topk/sliding
 
 ### Command-line options
 
-The tool is configured through command-line options. Below are some key options:
+The tool is configured through command-line options.
 
 - `-k` (default: 50): Number of top items to track.
 - `-width` (default: 3000): Width of the Top-K sketch.
