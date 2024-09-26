@@ -95,7 +95,7 @@ The tool is configured through command-line options.
 
 ```bash
 # count and track the top 10 items over a 30s sliding window using 1s counter buckets.
-cat my_data.jsonl | my_topk_tool -k 10 -tick 1s -window 30s -json
+cat my_data.jsonl | sliding-topk-tui-demo -k 10 -tick 1s -window 30s -json
 ```
 
 ### Input Formats
