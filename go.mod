@@ -8,7 +8,7 @@ require (
 	github.com/charmbracelet/lipgloss v0.13.0
 	github.com/charmbracelet/x/term v0.2.0
 	github.com/chriskim06/drawille-go v0.0.4
-	github.com/keilerkonzept/topk v0.2.8
+	github.com/keilerkonzept/topk v1.1.0
 )
 
 require (

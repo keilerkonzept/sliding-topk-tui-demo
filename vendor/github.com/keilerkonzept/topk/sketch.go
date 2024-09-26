@@ -39,12 +39,13 @@ type Sketch struct {
 //   - The decay parameter defaults to 0.9 unless the [WithDecay] option is set.
 //   - The decay LUT size defaults to 256 unless the [WithDecayLUTSize] option is set.
 func New(k int, opts ...Option) *Sketch {
-	log_k := int(math.Ceil(math.Log(float64(k))))
+	log_k := int(math.Log(float64(k)))
+	k_log_k := int(float64(k) * math.Log(float64(k)))
 
 	// default settings
 	out := Sketch{
 		K:     k,
-		Width: max(256, k*log_k),
+		Width: max(256, k_log_k),
 		Depth: max(3, log_k),
 		Decay: 0.9,
 	}
@@ -129,14 +130,14 @@ func (me *Sketch) Add(item string, increment uint32) bool {
 		// empty bucket (zero count)
 		case count == 0:
 			b.Fingerprint = fingerprint
-			b.Count = increment
 			count = increment
-
+			b.Count = count
+			maxCount = max(maxCount, count)
 		// this flow's bucket (equal fingerprint)
 		case b.Fingerprint == fingerprint:
-			b.Count = increment
 			count += increment
-
+			b.Count = count
+			maxCount = max(maxCount, count)
 		// another flow's bucket (nonequal fingerprint)
 		default:
 			// can't be inlined, so not factored out
@@ -146,23 +147,24 @@ func (me *Sketch) Add(item string, increment uint32) bool {
 				if count < lookupTableSize {
 					decay = me.DecayLUT[count]
 				} else {
-					decay = float32(math.Pow(
-						float64(me.DecayLUT[lookupTableSize-1]),
-						float64(count/(lookupTableSize-1)))) * me.DecayLUT[count%(lookupTableSize-1)]
+					decay =
+						float32(math.Pow(
+							float64(me.DecayLUT[lookupTableSize-1]),
+							float64(count/(lookupTableSize-1)))) * me.DecayLUT[count%(lookupTableSize-1)]
 				}
 				if rand.Float32() < decay {
 					count--
 					if count == 0 {
 						b.Fingerprint = fingerprint
 						count = incrementRemaining
+						b.Count = count
+						maxCount = max(maxCount, count)
 						break
 					}
 				}
 			}
 		}
 
-		b.Count = count
-		maxCount = max(maxCount, count)
 	}
 
 	return me.Heap.Update(item, fingerprint, maxCount)
@@ -210,6 +212,5 @@ func (me *Sketch) SortedSlice() []heap.Item {
 // Reset resets the sketch to an empty state.
 func (me *Sketch) Reset() {
 	clear(me.Buckets)
-	clear(me.Heap.Items)
-	clear(me.Heap.Index)
+	me.Heap.Reset()
 }

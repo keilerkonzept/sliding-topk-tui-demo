@@ -20,8 +20,8 @@ github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f h1:Y/CXytFA4m6
 github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f/go.mod h1:vw97MGsxSvLiUE2X8qFplwetxpGLQrlU1Q9AUEIzCaM=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
-github.com/keilerkonzept/topk v0.2.8 h1:m6u0Cy/ggeh0yP4CJXbDUdP7zX01pVbn5z+NkDx8248=
-github.com/keilerkonzept/topk v0.2.8/go.mod h1:1g+FPnF2IYFdw6SljNqi/N+EBL/HDkxtU0UwO9PJ1Ng=
+github.com/keilerkonzept/topk v1.1.0 h1:9Yy1aS1n8JNaEGXZ2yR2MbRVboxI43nFxYKlgUn7GGI=
+github.com/keilerkonzept/topk v1.1.0/go.mod h1:1g+FPnF2IYFdw6SljNqi/N+EBL/HDkxtU0UwO9PJ1Ng=
 github.com/kylelemons/godebug v1.1.0 h1:RPNrshWIDI6G2gRW9EHilWtl7Z6Sb1BR0xunSBf0SNc=
 github.com/kylelemons/godebug v1.1.0/go.mod h1:9/0rRGxNHcop5bhtWyNeEfOS8JIWk580+fNqagV/RAw=
 github.com/lucasb-eyer/go-colorful v1.2.0 h1:1nnpGOrhyZZuNyfu1QjKiUICQ74+3FNCN69Aj6K7nkY=
