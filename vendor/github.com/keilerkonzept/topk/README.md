@@ -4,10 +4,10 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/keilerkonzept/topk.svg)](https://pkg.go.dev/github.com/keilerkonzept/topk)
 [![Go Report Card](https://goreportcard.com/badge/github.com/keilerkonzept/topk)](https://goreportcard.com/report/github.com/keilerkonzept/topk)
 
-Sliding-window and regular top-K sketches. [Significantly faster (~1.5x)](#comparison-with-segmentiotopk) than [segmentio/topk](https://github.com/segmentio/topk) on small sketches (k <= 1000) and [much faster (10x-90x)](#comparison-with-segmentiotopk) on large sketches (k >= 10000).
+Sliding-window and regular top-K sketches.
 
-- A fast implementation of the [HeavyKeeper top-K sketch](https://www.usenix.org/conference/atc18/presentation/gong) inspired by the [segmentio implementation](https://github.com/segmentio/topk) and [RedisBloom implementation](https://github.com/RedisBloom/RedisBloom/blob/b5916e1b9fba17829c3e329c127b99d706eb31f6/src/topk.c).
-- A sliding-window top-K sketch, also based on HeavyKeeper, as described in ["A Sketch Framework for Approximate Data Stream Processing in Sliding Windows"](https://yangtonghome.github.io/uploads/SlidingSketch_TKDE2022_final.pdf)
+- A fast implementation of the [**HeavyKeeper top-K sketch**](https://www.usenix.org/conference/atc18/presentation/gong) inspired by the [segmentio implementation](https://github.com/segmentio/topk) and [RedisBloom implementation](https://github.com/RedisBloom/RedisBloom/blob/b5916e1b9fba17829c3e329c127b99d706eb31f6/src/topk.c). [Significantly faster (~1.5x)](#comparison-with-segmentiotopk) than [segmentio/topk](https://github.com/segmentio/topk) on small sketches (k <= 1000) and [much faster (10x-90x)](#comparison-with-segmentiotopk) on large sketches (k >= 10000).
+- A **sliding-window top-K sketch**, also based on HeavyKeeper, as described in ["A Sketch Framework for Approximate Data Stream Processing in Sliding Windows"](https://yangtonghome.github.io/uploads/SlidingSketch_TKDE2022_final.pdf)
 
 ```go
 import (
@@ -239,16 +239,18 @@ cpu: Apple M1 Pro
 
 | K      | Depth | Width   | Decay | `segmentio/topk` (sec/op) | this package (sec/op) | diff                   |
 |--------|-------|---------|-------|---------------------------|-----------------------|------------------------|
-| 100    | 4     | 460     | 0.6   | 800.1n ± 5%               | 447.9n ±  5%          | **-44.03%** (p=0.000 n=10) |
-| 100    | 4     | 460     | 0.8   | 753.8n ± 2%               | 504.5n ±  3%          | **-33.07%** (p=0.000 n=10) |
-| 100    | 4     | 460     | 0.9   | 687.4n ± 2%               | 476.3n ±  3%          | **-30.71%** (p=0.000 n=10) |
-| 1000   | 6     | 6907    | 0.6   | 1149.5n ± 2%              | 569.4n ±  2%          | **-50.46%** (p=0.000 n=10) |
-| 1000   | 6     | 6907    | 0.8   | 1086.5n ± 2%              | 677.7n ±  2%          | **-37.63%** (p=0.000 n=10) |
-| 1000   | 6     | 6907    | 0.9   | 966.8n ± 2%               | 627.6n ±  2%          | **-35.08%** (p=0.000 n=10) |
-| 10000  | 9     | 92103   | 0.6   | 10.993µ ± 2%              | 1.232µ ±  6%          | **-88.79%** (p=0.000 n=10) |
-| 10000  | 9     | 92103   | 0.8   | 11.046µ ± 5%              | 1.326µ ± 10%          | **-88.00%** (p=0.000 n=10) |
-| 10000  | 9     | 92103   | 0.9   | 10.859µ ± 2%              | 1.280µ ±  5%          | **-88.21%** (p=0.000 n=10) |
-| 100000 | 1     | 1151292 | 0.6   | 91.304µ ± 1%              | 1.893µ ±  4%          | **-97.93%** (p=0.000 n=10) |
-| 100000 | 1     | 1151292 | 0.8   | 90.494µ ± 1%              | 1.888µ ±  1%          | **-97.91%** (p=0.000 n=10) |
-| 100000 | 1     | 1151292 | 0.9   | 91.129µ ± 1%              | 1.910µ ±  1%          | **-97.90%** (p=0.000 n=10) |
-```
+| 10     | 3     | 256     | 0.6   | 641.0n ± 1%               | 373.5n ±  3%          | **-41.73%** (p=0.000 n=10) |
+| 10     | 3     | 256     | 0.8   | 602.6n ± 1%               | 387.3n ±  2%          | **-35.73%** (p=0.000 n=10) |
+| 10     | 3     | 256     | 0.9   | 550.4n ± 4%               | 431.3n ±  2%          | **-21.63%** (p=0.000 n=10) |
+| 100    | 4     | 460     | 0.6   | 763.8n ± 2%               | 427.0n ±  1%          | **-44.09%** (p=0.000 n=10) |
+| 100    | 4     | 460     | 0.8   | 720.9n ± 2%               | 459.1n ±  4%          | **-36.30%** (p=0.000 n=10) |
+| 100    | 4     | 460     | 0.9   | 660.6n ± 3%               | 539.0n ± 22%          | **-18.41%** (p=0.005 n=10) |
+| 1000   | 6     | 6907    | 0.6   | 1107.0n ± 2%              | 555.9n ±  8%          | **-49.79%** (p=0.000 n=10) |
+| 1000   | 6     | 6907    | 0.8   | 1040.0n ± 4%              | 613.4n ±  2%          | **-41.02%** (p=0.000 n=10) |
+| 1000   | 6     | 6907    | 0.9   | 936.5n ± 1%               | 731.5n ±  2%          | **-21.89%** (p=0.000 n=10) |
+| 10000  | 9     | 92103   | 0.6   | 10.693µ ± 2%              | 1.058µ ±  2%          | **-90.11%** (p=0.000 n=10) |
+| 10000  | 9     | 92103   | 0.8   | 10.667µ ± 1%              | 1.182µ ±  6%          | **-88.92%** (p=0.000 n=10) |
+| 10000  | 9     | 92103   | 0.9   | 10.724µ ± 1%              | 1.288µ ±  2%          | **-87.98%** (p=0.000 n=10) |
+| 100000 | 11    | 1151292 | 0.6   | 89.385µ ± 0%              | 1.674µ ±  1%          | **-98.13%** (p=0.000 n=10) |
+| 100000 | 11    | 1151292 | 0.8   | 89.349µ ± 1%              | 1.708µ ±  1%          | **-98.09%** (p=0.000 n=10) |
+| 100000 | 11    | 1151292 | 0.9   | 89.284µ ± 1%              | 1.705µ ±  1%          | **-98.09%** (p=0.000 n=10) |
