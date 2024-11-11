@@ -27,7 +27,7 @@ github.com/charmbracelet/lipgloss
 ## explicit; go 1.18
 github.com/charmbracelet/x/ansi
 github.com/charmbracelet/x/ansi/parser
-# github.com/charmbracelet/x/term v0.2.0
+# github.com/charmbracelet/x/term v0.2.1
 ## explicit; go 1.18
 github.com/charmbracelet/x/term
 # github.com/chriskim06/drawille-go v0.0.4
