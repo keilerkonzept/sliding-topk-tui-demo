@@ -17,7 +17,7 @@ github.com/charmbracelet/bubbles/paginator
 github.com/charmbracelet/bubbles/runeutil
 github.com/charmbracelet/bubbles/spinner
 github.com/charmbracelet/bubbles/textinput
-# github.com/charmbracelet/bubbletea v1.2.1
+# github.com/charmbracelet/bubbletea v1.2.3
 ## explicit; go 1.18
 github.com/charmbracelet/bubbletea
 # github.com/charmbracelet/lipgloss v1.0.0
@@ -70,10 +70,10 @@ github.com/rivo/uniseg
 # github.com/sahilm/fuzzy v0.1.1
 ## explicit
 github.com/sahilm/fuzzy
-# golang.org/x/sync v0.8.0
+# golang.org/x/sync v0.9.0
 ## explicit; go 1.18
 golang.org/x/sync/errgroup
-# golang.org/x/sys v0.26.0
+# golang.org/x/sys v0.27.0
 ## explicit; go 1.18
 golang.org/x/sys/unix
 golang.org/x/sys/windows
