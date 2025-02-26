@@ -17,7 +17,7 @@ github.com/charmbracelet/bubbles/paginator
 github.com/charmbracelet/bubbles/runeutil
 github.com/charmbracelet/bubbles/spinner
 github.com/charmbracelet/bubbles/textinput
-# github.com/charmbracelet/bubbletea v1.3.3
+# github.com/charmbracelet/bubbletea v1.3.4
 ## explicit; go 1.18
 github.com/charmbracelet/bubbletea
 # github.com/charmbracelet/lipgloss v1.0.0
