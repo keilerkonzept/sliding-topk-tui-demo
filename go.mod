@@ -3,8 +3,8 @@ module github.com/keilerkonzept/sliding-topk-tui-demo
 go 1.23.0
 
 require (
-	github.com/charmbracelet/bubbles v0.20.0
-	github.com/charmbracelet/bubbletea v1.3.3
+	github.com/charmbracelet/bubbles v0.21.0
+	github.com/charmbracelet/bubbletea v1.3.4
 	github.com/charmbracelet/lipgloss v1.1.0
 	github.com/charmbracelet/x/term v0.2.1
 	github.com/chriskim06/drawille-go v0.0.4
