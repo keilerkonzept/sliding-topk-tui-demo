@@ -17,8 +17,8 @@ github.com/charmbracelet/bubbles/paginator
 github.com/charmbracelet/bubbles/runeutil
 github.com/charmbracelet/bubbles/spinner
 github.com/charmbracelet/bubbles/textinput
-# github.com/charmbracelet/bubbletea v1.3.4
-## explicit; go 1.18
+# github.com/charmbracelet/bubbletea v1.3.10
+## explicit; go 1.24.0
 github.com/charmbracelet/bubbletea
 # github.com/charmbracelet/colorprofile v0.2.3-0.20250311203215-f60798e515dc
 ## explicit; go 1.18
@@ -26,10 +26,9 @@ github.com/charmbracelet/colorprofile
 # github.com/charmbracelet/lipgloss v1.1.0
 ## explicit; go 1.18
 github.com/charmbracelet/lipgloss
-# github.com/charmbracelet/x/ansi v0.8.0
-## explicit; go 1.18
+# github.com/charmbracelet/x/ansi v0.10.1
+## explicit; go 1.23.0
 github.com/charmbracelet/x/ansi
-github.com/charmbracelet/x/ansi/kitty
 github.com/charmbracelet/x/ansi/parser
 # github.com/charmbracelet/x/cellbuf v0.0.13-0.20250311204145-2c3ea96c31dd
 ## explicit; go 1.18
@@ -80,11 +79,8 @@ github.com/sahilm/fuzzy
 # github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e
 ## explicit; go 1.19
 github.com/xo/terminfo
-# golang.org/x/sync v0.11.0
-## explicit; go 1.18
-golang.org/x/sync/errgroup
-# golang.org/x/sys v0.30.0
-## explicit; go 1.18
+# golang.org/x/sys v0.36.0
+## explicit; go 1.24.0
 golang.org/x/sys/unix
 golang.org/x/sys/windows
 # golang.org/x/text v0.18.0
